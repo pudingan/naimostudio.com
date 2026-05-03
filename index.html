@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奈默行銷工作室 | Naimo Marketing Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blush: #F5C8BE;
+    --blush-deep: #E8A494;
+    --rose: #C97B6E;
+    --rose-dark: #8B4F45;
+    --cream: #FDF6F0;
+    --cream-warm: #FAF0E8;
+    --petal: #F9E4DC;
+    --leaf: #7A9E7E;
+    --leaf-light: #C2D9C4;
+    --brown: #5C3D35;
+    --brown-light: #9B6B5F;
+    --text-main: #2E1C18;
+    --text-mid: #6B4038;
+    --text-soft: #A07570;
+    --white: #FFFFFF;
+    --shadow: rgba(90,40,30,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--cream);
+    color: var(--text-main);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(253,246,240,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--blush);
+  }
+  .nav-logo {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--rose-dark);
+    letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 500;
+    color: var(--text-mid);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--rose); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 2rem 4rem;
+    background: linear-gradient(160deg, #FDF0EA 0%, #F9E8DF 40%, #F2D8CE 100%);
+  }
+
+  .hero-bg-circles {
+    position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+  }
+  .hero-bg-circles span {
+    position: absolute; border-radius: 50%;
+    background: radial-gradient(circle, var(--blush) 0%, transparent 70%);
+    opacity: 0.4;
+  }
+  .hero-bg-circles span:nth-child(1) { width: 500px; height: 500px; top: -100px; right: -100px; }
+  .hero-bg-circles span:nth-child(2) { width: 300px; height: 300px; bottom: 50px; left: -80px; opacity: 0.3; }
+
+  .hero-inner {
+    max-width: 1100px; width: 100%;
+    display: grid; grid-template-columns: 1fr 420px;
+    gap: 4rem; align-items: center;
+    position: relative; z-index: 1;
+  }
+
+  .hero-text h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(2.8rem, 6vw, 4.2rem);
+    font-weight: 700;
+    color: var(--rose-dark);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+  .hero-text .subtitle-en {
+    font-size: 0.95rem; font-weight: 300;
+    color: var(--text-soft);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .hero-text p {
+    font-size: 1.05rem; line-height: 1.85;
+    color: var(--text-mid);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .btn-primary {
+    display: inline-block;
+    padding: 0.85rem 2.2rem;
+    background: var(--rose-dark);
+    color: #fff;
+    font-size: 0.9rem; font-weight: 500;
+    letter-spacing: 0.1em;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--rose); transform: translateY(-2px); }
+
+  /* RABBIT ILLUSTRATION */
+  .hero-visual {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .rabbit-card {
+    background: var(--white);
+    border-radius: 40px;
+    padding: 2.5rem;
+    box-shadow: 0 30px 80px var(--shadow), 0 8px 20px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+    width: 340px; height: 380px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .rabbit-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 70% 30%, #FFF0EB 0%, #FFF8F5 100%);
+  }
+
+  .rabbit-svg-wrap {
+    position: relative; z-index: 1;
+    animation: floatRabbit 4s ease-in-out infinite;
+  }
+  @keyframes floatRabbit {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* SECTION COMMON */
+  section { padding: 6rem 2rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    color: var(--brown);
+    line-height: 1.2;
+    margin-bottom: 3rem;
+  }
+
+  /* ABOUT */
+  #about {
+    background: var(--cream-warm);
+  }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr;
+    gap: 2rem; align-items: center;
+    max-width: 720px;
+  }
+  .about-text p {
+    font-size: 1rem; line-height: 1.95;
+    color: var(--text-mid);
+    margin-bottom: 1.2rem;
+  }
+  .stat-row {
+    display: flex; gap: 2rem; margin-top: 2rem;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--rose-dark);
+  }
+  .stat-label {
+    font-size: 0.8rem; color: var(--text-soft);
+    letter-spacing: 0.05em;
+  }
+  .about-timeline { position: relative; }
+  .timeline-line {
+    position: absolute; left: 16px; top: 0; bottom: 0;
+    width: 2px; background: var(--blush);
+    border-radius: 1px;
+  }
+  .timeline-item {
+    position: relative; padding-left: 3rem;
+    margin-bottom: 1.8rem;
+  }
+  .timeline-dot {
+    position: absolute; left: 8px; top: 5px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--blush-deep);
+    border: 3px solid var(--cream-warm);
+    transform: translateX(-50%);
+  }
+  .timeline-year {
+    font-size: 0.75rem; color: var(--text-soft);
+    letter-spacing: 0.1em; margin-bottom: 0.25rem;
+  }
+  .timeline-company {
+    font-weight: 700; font-size: 0.95rem;
+    color: var(--brown); margin-bottom: 0.2rem;
+  }
+  .timeline-role {
+    font-size: 0.85rem; color: var(--text-mid);
+  }
+
+  /* SERVICES */
+  #services {
+    background: var(--cream);
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 2rem;
+    border: 1px solid rgba(201,123,110,0.12);
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--blush-deep);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px var(--shadow); }
+  .service-card:hover::after { transform: scaleX(1); }
+
+  .service-icon {
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    background: var(--petal);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.2rem;
+  }
+  .service-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 0.6rem;
+  }
+  .service-desc {
+    font-size: 0.85rem; line-height: 1.75;
+    color: var(--text-soft);
+  }
+
+  /* WORKS */
+  #works {
+    background: var(--petal);
+  }
+  .works-intro {
+    font-size: 1rem; line-height: 1.85;
+    color: var(--text-mid);
+    max-width: 700px;
+    margin-bottom: 3rem;
+  }
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 800px;
+  }
+  .work-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(201,123,110,0.1);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .work-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px var(--shadow); }
+
+  .work-thumb {
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .work-thumb.pink { background: linear-gradient(135deg, #F5C8BE, #E8A494); }
+  .work-thumb.green { background: linear-gradient(135deg, #C2D9C4, #7A9E7E); }
+  .work-thumb.warm { background: linear-gradient(135deg, #F9D8B0, #E8B070); }
+  .work-thumb.deep { background: linear-gradient(135deg, #C9A0B4, #9B6080); }
+
+  .work-thumb-icon {
+    font-size: 3.5rem; opacity: 0.85;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+  }
+  .work-play-badge {
+    position: absolute; bottom: 12px; right: 12px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 20px; padding: 4px 10px;
+    font-size: 0.7rem; font-weight: 600;
+    color: var(--rose-dark);
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  .work-info { padding: 1.2rem 1.5rem; }
+  .work-badge {
+    display: inline-block;
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--petal);
+    color: var(--rose);
+    border-radius: 20px; padding: 3px 10px;
+    margin-bottom: 0.6rem;
+  }
+  .work-title {
+    font-weight: 700; font-size: 0.95rem;
+    color: var(--brown); margin-bottom: 0.4rem;
+  }
+  .work-meta {
+    font-size: 0.82rem; color: var(--text-soft); line-height: 1.5;
+  }
+
+  /* IG Note */
+  .ig-note {
+    margin-top: 2rem;
+    padding: 1.2rem 1.5rem;
+    background: var(--white);
+    border-radius: 16px;
+    border-left: 4px solid var(--blush-deep);
+    font-size: 0.9rem; color: var(--text-mid); line-height: 1.7;
+  }
+  .ig-note strong { color: var(--rose-dark); }
+
+  /* CONTACT */
+  #contact {
+    background: var(--brown);
+    color: var(--cream);
+    text-align: center;
+  }
+  #contact .section-title { color: var(--blush); }
+  #contact .section-tag { color: var(--blush-deep); }
+  .contact-sub {
+    font-size: 1rem; line-height: 1.85;
+    color: rgba(253,246,240,0.7);
+    max-width: 500px; margin: 0 auto 3rem;
+  }
+  .contact-cards {
+    display: flex; justify-content: center; gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .contact-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(245,200,190,0.2);
+    border-radius: 20px;
+    padding: 1.8rem 2.5rem;
+    text-decoration: none;
+    color: var(--cream);
+    transition: background 0.25s, transform 0.2s;
+    display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+    min-width: 200px;
+  }
+  .contact-card:hover {
+    background: rgba(255,255,255,0.14);
+    transform: translateY(-4px);
+  }
+  .contact-card-icon { font-size: 1.8rem; }
+  .contact-card-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.6; }
+  .contact-card-value { font-size: 0.9rem; font-weight: 500; }
+
+  /* FOOTER */
+  footer {
+    background: var(--text-main);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero-visual { justify-content: center; }
+    .hero-text p { margin-left: auto; margin-right: auto; }
+    .about-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .works-grid { grid-template-columns: 1fr; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .stat-row { gap: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">奈默行銷工作室</div>
+  <ul class="nav-links">
+    <li><a href="#about">關於我</a></li>
+    <li><a href="#services">服務項目</a></li>
+    <li><a href="#works">作品案例</a></li>
+    <li><a href="#contact">聯絡我</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-circles">
+    <span></span><span></span>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="subtitle-en">Naimo Marketing Studio</div>
+      <h1>奈默<br>行銷工作室</h1>
+      <p>從品牌策略到社群內容，從短影音矩陣到 KOC 合作，用真實的創意與數據，讓你的品牌被更多人看見。</p>
+      <a href="#contact" class="btn-primary">立即洽詢合作 →</a>
+    </div>
+    <div class="hero-visual">
+      <div class="rabbit-card">
+        <!-- Begonia rabbit illustration -->
+        <div class="rabbit-svg-wrap">
+          <svg width="240" height="280" viewBox="0 0 240 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background flowers -->
+            <circle cx="30" cy="50" r="14" fill="#F9C5BE" opacity="0.6"/>
+            <circle cx="210" cy="70" r="10" fill="#F5A898" opacity="0.5"/>
+            <circle cx="195" cy="240" r="12" fill="#F9C5BE" opacity="0.5"/>
+            <circle cx="45" cy="230" r="9" fill="#F5A898" opacity="0.4"/>
+
+            <!-- Left ear -->
+            <ellipse cx="87" cy="62" rx="20" ry="52" fill="#F5C8BE" transform="rotate(-8 87 62)"/>
+            <ellipse cx="87" cy="64" rx="11" ry="40" fill="#EDA498" opacity="0.6" transform="rotate(-8 87 64)"/>
+            <!-- Right ear -->
+            <ellipse cx="153" cy="58" rx="20" ry="52" fill="#F5C8BE" transform="rotate(8 153 58)"/>
+            <ellipse cx="153" cy="60" rx="11" ry="40" fill="#EDA498" opacity="0.6" transform="rotate(8 153 60)"/>
+
+            <!-- Body -->
+            <ellipse cx="120" cy="200" rx="65" ry="72" fill="#FAE8E3"/>
+            <!-- Head -->
+            <circle cx="120" cy="135" r="62" fill="#FAE8E3"/>
+
+            <!-- Cheek blush -->
+            <ellipse cx="92" cy="148" rx="16" ry="10" fill="#F5A898" opacity="0.35"/>
+            <ellipse cx="148" cy="148" rx="16" ry="10" fill="#F5A898" opacity="0.35"/>
+
+            <!-- Eyes -->
+            <circle cx="103" cy="132" r="9" fill="#4A2820"/>
+            <circle cx="137" cy="132" r="9" fill="#4A2820"/>
+            <circle cx="106" cy="129" r="3" fill="white"/>
+            <circle cx="140" cy="129" r="3" fill="white"/>
+
+            <!-- Nose -->
+            <ellipse cx="120" cy="149" rx="5" ry="3.5" fill="#E8908A"/>
+            <!-- Mouth -->
+            <path d="M113 154 Q120 160 127 154" stroke="#E8908A" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+
+            <!-- Little paws -->
+            <ellipse cx="82" cy="240" rx="22" ry="16" fill="#F5C8BE"/>
+            <ellipse cx="158" cy="240" rx="22" ry="16" fill="#F5C8BE"/>
+            <!-- Paw toes -->
+            <circle cx="73" cy="247" r="5" fill="#EDA498" opacity="0.5"/>
+            <circle cx="82" cy="250" r="5" fill="#EDA498" opacity="0.5"/>
+            <circle cx="91" cy="247" r="5" fill="#EDA498" opacity="0.5"/>
+            <circle cx="149" cy="247" r="5" fill="#EDA498" opacity="0.5"/>
+            <circle cx="158" cy="250" r="5" fill="#EDA498" opacity="0.5"/>
+            <circle cx="167" cy="247" r="5" fill="#EDA498" opacity="0.5"/>
+
+            <!-- Arms -->
+            <ellipse cx="67" cy="195" rx="16" ry="26" fill="#F5C8BE" transform="rotate(-15 67 195)"/>
+            <ellipse cx="173" cy="195" rx="16" ry="26" fill="#F5C8BE" transform="rotate(15 173 195)"/>
+
+            <!-- Small flower on head -->
+            <g transform="translate(113, 88) rotate(-15)">
+              <circle cx="0" cy="0" r="6" fill="#E8908A"/>
+              <circle cx="0" cy="-9" r="5" fill="#F5C8BE"/>
+              <circle cx="8" cy="-5" r="5" fill="#F9D4CE"/>
+              <circle cx="8" cy="5" r="5" fill="#F5C8BE"/>
+              <circle cx="0" cy="9" r="5" fill="#F9D4CE"/>
+              <circle cx="-8" cy="5" r="5" fill="#F5C8BE"/>
+              <circle cx="-8" cy="-5" r="5" fill="#F9D4CE"/>
+              <circle cx="0" cy="0" r="4" fill="#EDA498"/>
+            </g>
+
+            <!-- Tail -->
+            <circle cx="174" cy="252" r="18" fill="#FAE8E3"/>
+            <circle cx="174" cy="252" r="12" fill="#F5C8BE"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <div class="section-tag">About Me</div>
+        <h2 class="section-title">8年+<br>社群行銷實戰經驗</h2>
+        <p>從電競圈的 IP 網紅經營起家，曾在半年內將電競主持人的社群帳號從零衝上三萬人追蹤。接著擔任連鎖娃娃機品牌「夾子園」的行銷總監，主導短影音矩陣帳號建設，帶動品牌所有影片累積觀看突破千萬，奠定中部最具知名度的娃娃機連鎖品牌形象。</p>
+        <p>歷經廣告行銷公關公司、醫美診所、健康生技、攝影工作室等多元產業，掌握從品牌定位、社群策略、內容製作到廣告投放的完整行銷鏈路。擁有護理師背景的跨界視角，讓醫療相關品牌的內容更具信任感與專業度。</p>
+        <p>目前以「奈默行銷工作室」提供彈性接案服務，熟悉 IG、TikTok、Facebook、YouTube 等多平台運作，精通短影音矩陣帳號建置與 KOC 邀約合作機制，協助企業品牌與個人 IP 打造可持續成長的社群生態。</p>
+        <div class="stat-row">
+          <div class="stat-item">
+            <div class="stat-num">8+</div>
+            <div class="stat-label">年行銷經驗</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">1000萬+</div>
+            <div class="stat-label">累積影片觀看</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">多產業</div>
+            <div class="stat-label">跨界合作經驗</div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag reveal">Services</div>
+    <h2 class="section-title reveal">服務項目</h2>
+    <div class="services-grid">
+
+      <!-- 1 行銷企劃 -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="4" y="6" width="20" height="16" rx="3" stroke="#C97B6E" stroke-width="1.8" fill="none"/>
+            <line x1="8" y1="11" x2="20" y2="11" stroke="#C97B6E" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="8" y1="15" x2="16" y2="15" stroke="#C97B6E" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="21" cy="7" r="4" fill="#F5C8BE"/>
+            <path d="M19.5 7L21 8.5L23 6" stroke="#C97B6E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="service-name">行銷企劃撰寫</div>
+        <div class="service-desc">品牌行銷策略規劃、文案撰寫、SEO 文章、廣告腳本、提案簡報製作，從策略到執行一手包辦。</div>
+      </div>
+
+      <!-- 2 社群經營 -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="10" stroke="#C97B6E" stroke-width="1.8" fill="none"/>
+            <circle cx="9" cy="12" r="3" fill="#F5C8BE" stroke="#C97B6E" stroke-width="1.2"/>
+            <circle cx="19" cy="10" r="3" fill="#F5C8BE" stroke="#C97B6E" stroke-width="1.2"/>
+            <circle cx="14" cy="19" r="3" fill="#F5C8BE" stroke="#C97B6E" stroke-width="1.2"/>
+            <line x1="11.5" y1="13.5" x2="17" y2="11" stroke="#C97B6E" stroke-width="1.2"/>
+            <line x1="10.5" y1="14.5" x2="12.5" y2="17.5" stroke="#C97B6E" stroke-width="1.2"/>
+            <line x1="17.5" y1="12.5" x2="15.5" y2="17" stroke="#C97B6E" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <div class="service-name">社群經營</div>
+        <div class="service-desc">IG、TikTok、Facebook 等多平台社群管理，包含排程、互動回覆、數據分析與社群成長優化。</div>
+      </div>
+
+      <!-- 3 品牌建構 -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <polygon points="14,4 17,11 24,11 18.5,15.5 20.5,22.5 14,18 7.5,22.5 9.5,15.5 4,11 11,11" fill="#F5C8BE" stroke="#C97B6E" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="service-name">品牌建構</div>
+        <div class="service-desc">品牌定位、視覺風格規劃、品牌故事撰寫、角色設定，幫助你從零打造具有識別度的品牌形象。</div>
+      </div>
+
+      <!-- 4 影片拍攝 -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="3" y="8" width="16" height="12" rx="2.5" stroke="#C97B6E" stroke-width="1.8" fill="none"/>
+            <path d="M19 12L25 9V19L19 16" stroke="#C97B6E" stroke-width="1.8" stroke-linejoin="round" fill="none"/>
+            <circle cx="10" cy="14" r="3" fill="#F5C8BE"/>
+            <polygon points="9,12.5 9,15.5 12,14" fill="#C97B6E"/>
+          </svg>
+        </div>
+        <div class="service-name">長短影片拍攝</div>
+        <div class="service-desc">Reels、TikTok 短影音及品牌長影片企劃、拍攝、剪輯全製程，打造高播放量的視覺內容。</div>
+      </div>
+
+      <!-- 5 KOC -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="10" cy="11" r="5" fill="#F5C8BE" stroke="#C97B6E" stroke-width="1.5"/>
+            <circle cx="20" cy="9" r="4" fill="#F5C8BE" stroke="#C97B6E" stroke-width="1.5"/>
+            <path d="M3 22c0-3.31 3.13-6 7-6s7 2.69 7 6" stroke="#C97B6E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M20 14c2.76 0 5 1.79 5 4" stroke="#C97B6E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <circle cx="21" cy="19" r="3.5" fill="#EDA498"/>
+            <path d="M19.5 19L21 20.5L23 17.5" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="service-name">KOC 配合</div>
+        <div class="service-desc">評估、邀請並媒合適合品牌的 KOC 合作，規劃合作腳本，追蹤成效，協助品牌口碑擴散。</div>
+      </div>
+
+      <!-- 6 其他專案 -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="10" stroke="#C97B6E" stroke-width="1.8" fill="none"/>
+            <circle cx="14" cy="14" r="3" fill="#F5C8BE" stroke="#C97B6E" stroke-width="1.5"/>
+            <line x1="14" y1="4" x2="14" y2="8" stroke="#C97B6E" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="14" y1="20" x2="14" y2="24" stroke="#C97B6E" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="4" y1="14" x2="8" y2="14" stroke="#C97B6E" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="20" y1="14" x2="24" y2="14" stroke="#C97B6E" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="service-name">其他專案</div>
+        <div class="service-desc">廣告投放規劃、實體活動企劃執行、異業結合提案、一頁式網站規劃，歡迎提出你的需求討論。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="section-inner">
+    <div class="section-tag reveal">Portfolio</div>
+    <h2 class="section-title reveal">代表作品案例</h2>
+    <p class="works-intro reveal">曾操刀多個品牌的社群帳號經營，從連鎖娃娃機品牌的短影音矩陣到律師個人品牌的 IG 經營，讓品牌在對的平台以對的姿態被看見。</p>
+
+    <div class="works-grid">
+
+      <div class="work-card reveal">
+        <div class="work-thumb pink">
+          <div style="text-align:center; position:relative; z-index:1;">
+            <div style="font-size:3rem;">🎯</div>
+            <div style="margin-top:8px; font-size:0.75rem; font-weight:700; color:#8B4F45; letter-spacing:0.1em;">夾子園 短影音矩陣</div>
+          </div>
+          <div class="work-play-badge">▶ 千萬播放</div>
+        </div>
+        <div class="work-info">
+          <div class="work-badge">短影音矩陣</div>
+          <div class="work-title">夾子園連鎖娃娃機品牌行銷</div>
+          <div class="work-meta">擔任行銷總監期間，規劃並執行多帳號短影音矩陣策略，製作品牌內容帶動單支影片播放量突破千萬，強化中部連鎖娃娃機品牌知名度。</div>
+        </div>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="work-thumb deep">
+          <div style="text-align:center; position:relative; z-index:1;">
+            <div style="font-size:3rem;">⚖️</div>
+            <div style="margin-top:8px; font-size:0.75rem; font-weight:700; color:#fff; letter-spacing:0.1em;">律師個人品牌 IG</div>
+          </div>
+          <div class="work-play-badge">▶ IG Reels</div>
+        </div>
+        <div class="work-info">
+          <div class="work-badge">個人品牌 IP</div>
+          <div class="work-title">陳律師 IG 個人品牌經營</div>
+          <div class="work-meta">協助律師打造 IG 個人品牌，規劃內容走向、拍攝腳本與短影片製作，提升法律知識影片觸及率，建立專業可信賴的個人形象。
+            <br><a href="https://www.instagram.com/__chenkevin__/" target="_blank" style="color:var(--rose); font-size:0.8rem;">@__chenkevin__ ↗</a>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+    <div class="ig-note reveal">
+      📱 想看更多真實作品案例？歡迎前往我的 IG：
+      <strong><a href="https://www.instagram.com/puddinglife._/" target="_blank" style="color:var(--rose-dark); text-decoration:none;">@puddinglife._ ↗</a></strong>
+      ，或直接聯繫我討論更多合作細節。
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-tag">Contact</div>
+    <h2 class="section-title">開始合作</h2>
+    <p class="contact-sub">請聯絡我的 E-Mail，或是透過 IG 聯繫我討論更多合作細節。</p>
+    <div class="contact-cards">
+      <a href="mailto:bydhni520@gmail.com" class="contact-card">
+        <div class="contact-card-icon">✉️</div>
+        <div class="contact-card-label">Email</div>
+        <div class="contact-card-value">bydhni520@gmail.com</div>
+      </a>
+      <a href="https://www.instagram.com/puddinglife._/" target="_blank" class="contact-card">
+        <div class="contact-card-icon">📸</div>
+        <div class="contact-card-label">Instagram</div>
+        <div class="contact-card-value">@puddinglife._</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 奈默行銷工作室 Naimo Marketing Studio · All rights reserved.</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
