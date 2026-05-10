@@ -357,7 +357,48 @@
   }
   .ig-note strong { color: var(--rose-dark); }
 
-  /* CONTACT */
+  /* OBSERVATORY */
+  #observatory {
+    background: var(--cream-warm);
+  }
+  .observatory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .obs-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(201,123,110,0.12);
+    transition: transform 0.25s, box-shadow 0.25s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .obs-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px var(--shadow); }
+  .obs-card-thumb {
+    height: 140px;
+    background: linear-gradient(135deg, var(--petal), var(--blush));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+  }
+  .obs-card-body { padding: 1.2rem 1.4rem; }
+  .obs-card-date { font-size: 0.72rem; color: var(--text-soft); letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+  .obs-card-title { font-weight: 700; font-size: 0.95rem; color: var(--brown); margin-bottom: 0.5rem; line-height: 1.5; }
+  .obs-card-desc { font-size: 0.82rem; color: var(--text-soft); line-height: 1.65; }
+  .obs-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--white);
+    border-radius: 20px;
+    border: 2px dashed var(--blush);
+  }
+  .obs-empty-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .obs-empty-text { font-size: 0.95rem; color: var(--text-soft); }
+
+  /* OBSERVATORY */
   #contact {
     background: var(--brown);
     color: var(--cream);
@@ -439,6 +480,7 @@
     <li><a href="#services">服務項目</a></li>
     <li><a href="#works">作品案例</a></li>
     <li><a href="#contact">聯絡我</a></li>
+    <li><a href="#observatory">奈默觀察室</a></li>
   </ul>
 </nav>
 
@@ -709,6 +751,21 @@
       📱 想看更多真實作品案例？歡迎前往我的 IG：
       <strong><a href="https://www.instagram.com/puddinglife._/" target="_blank" style="color:var(--rose-dark); text-decoration:none;">@puddinglife._ ↗</a></strong>
       ，或直接聯繫我討論更多合作細節。
+    </div>
+  </div>
+</section>
+
+<!-- OBSERVATORY -->
+<section id="observatory">
+  <div class="section-inner">
+    <div class="section-tag reveal">Naimo Observatory</div>
+    <h2 class="section-title reveal">奈默觀察室</h2>
+    <p class="works-intro reveal">分享行銷趨勢、社群經營心得與實戰觀察，每週持續更新。</p>
+    <div class="observatory-grid reveal">
+      <div class="obs-empty">
+        <div class="obs-empty-icon">✍️</div>
+        <div class="obs-empty-text">文章即將上線，敬請期待</div>
+      </div>
     </div>
   </div>
 </section>
