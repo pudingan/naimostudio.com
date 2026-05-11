@@ -136,6 +136,103 @@
   .obs-empty-icon { font-size: 2.5rem; margin-bottom: 1rem; }
   .obs-empty-text { font-size: 0.95rem; color: var(--text-soft); }
 
+  .obs-card {
+    background: var(--white); border-radius: 20px; overflow: hidden;
+    border: 1px solid var(--card-border);
+    transition: transform 0.25s, box-shadow 0.25s;
+    text-decoration: none; color: inherit; display: block;
+  }
+  .obs-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px var(--shadow); }
+  .obs-card-thumb {
+    height: 130px;
+    background: linear-gradient(135deg, var(--mint-pale), var(--mint));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.2rem;
+  }
+  .obs-card-body   { padding: 1.1rem 1.3rem; }
+  .obs-card-date   { font-size: 0.72rem; color: var(--text-soft); margin-bottom: 0.4rem; }
+  .obs-card-title  { font-weight: 700; font-size: 0.93rem; color: var(--text-main); margin-bottom: 0.45rem; line-height: 1.5; }
+  .obs-card-desc   { font-size: 0.81rem; color: var(--text-soft); line-height: 1.65; }
+
+  /* Article Modal */
+  .article-modal {
+    display: none; position: fixed; inset: 0; z-index: 999;
+    background: rgba(26,48,40,0.85); backdrop-filter: blur(6px);
+    padding: 2rem; overflow-y: auto;
+  }
+  .article-modal.active { display: flex; align-items: flex-start; justify-content: center; }
+  .article-content {
+    background: var(--white); border-radius: 24px;
+    max-width: 800px; width: 100%;
+    padding: 3rem; margin: 2rem auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+  .article-close {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--mint-pale); color: var(--green-dark);
+    border: none; font-size: 1.3rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .article-close:hover { background: var(--mint); }
+  .article-header { margin-bottom: 2rem; }
+  .article-meta {
+    font-size: 0.85rem; color: var(--text-soft);
+    margin-bottom: 0.8rem; letter-spacing: 0.03em;
+  }
+  .article-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.8rem; font-weight: 700;
+    color: var(--text-main); line-height: 1.4;
+    margin-bottom: 1.5rem;
+  }
+  .article-intro {
+    font-size: 1.05rem; line-height: 1.8;
+    color: var(--text-mid);
+    padding: 1.2rem 1.5rem;
+    background: var(--mint-pale);
+    border-left: 4px solid var(--mint-deep);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  .article-body h2 {
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--green-dark);
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--mint-pale);
+  }
+  .article-body p {
+    font-size: 1rem; line-height: 1.95;
+    color: var(--text-mid); margin-bottom: 1.2rem;
+  }
+  .article-body ul {
+    margin: 1rem 0 1.5rem 1.5rem;
+    list-style: none;
+  }
+  .article-body ul li {
+    position: relative; padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    font-size: 1rem; line-height: 1.85;
+    color: var(--text-mid);
+  }
+  .article-body ul li::before {
+    content: '•'; position: absolute; left: 0;
+    color: var(--mint-deep); font-size: 1.2rem;
+  }
+  .article-body ol {
+    margin: 1rem 0 1.5rem 1.5rem;
+    list-style: decimal;
+    color: var(--green-dark);
+  }
+  .article-body ol li {
+    padding-left: 0.5rem; margin-bottom: 0.8rem;
+    font-size: 1rem; line-height: 1.85;
+    color: var(--text-mid);
+  }
+
   /* CONTACT */
   #contact { background: var(--green-dark); color: var(--cream); text-align: center; }
   #contact .section-title { color: var(--mint-light); }
@@ -427,7 +524,14 @@
     </div>
     <div class="obs-panel" id="panel-life">
       <div class="observatory-grid">
-        <div class="obs-empty"><div class="obs-empty-icon">🌿</div><div class="obs-empty-text">生活隨筆即將上線，敬請期待</div></div>
+        <a href="#article-marriage" class="obs-card" onclick="showArticle('marriage'); return false;">
+          <div class="obs-card-thumb">💭</div>
+          <div class="obs-card-body">
+            <div class="obs-card-date">2026-05-11 00:30 · 布丁乾</div>
+            <div class="obs-card-title">聯誼真的能通往婚姻嗎？從「幸福列車」留言區看現代兩性相處</div>
+            <div class="obs-card-desc">如果只要有聯誼，結婚率就會上升，那台灣的生育率或許早已不是難題...</div>
+          </div>
+        </a>
       </div>
     </div>
   </div>
@@ -454,6 +558,57 @@
   </div>
 </section>
 
+<!-- Article Modal -->
+<div class="article-modal" id="article-marriage">
+  <div class="article-content">
+    <button class="article-close" onclick="closeArticle()">×</button>
+    <div class="article-header">
+      <div class="article-meta">2026-05-11 00:30 · 布丁乾</div>
+      <h1 class="article-title">聯誼真的能通往婚姻嗎？從「幸福列車」留言區看現代兩性相處</h1>
+    </div>
+    <div class="article-intro">
+      如果只要有聯誼，結婚率就會上升，那台灣的生育率或許早已不是難題。從公家機關到私人聯誼公司，甚至人手一個的交友軟體，配對服務無處不在，但結婚率卻依然不見起色。
+    </div>
+    <div class="article-body">
+      <p>到底是因為現代人太過挑剔，還是婚姻這門「生意」在現代時空下已不再討好？婚姻終究是兩個個體組成家庭的「合作賽」，但在新舊觀念劇烈衝突的今天，這場合作賽的門檻正變得前所未有的高。</p>
+
+      <h2>一、聯誼市場的供需失衡：有「曝光」就有機會嗎？</h2>
+      <p>從早期的筆友到現在的交友軟體，有情人終成眷屬的故事從未斷過。然而，現代人的社交成本已不可同日而語。</p>
+      <ul>
+        <li><strong>物質條件的焦慮：</strong>在高壓社會下，許多人連維持理想的物質生活都有難度，更遑論組建家庭的底氣。</li>
+        <li><strong>性別比例的斷層：</strong>觀察各大付費聯誼活動，往往出現「男性名額秒殺、女性名額不足」的現象，甚至需要找人湊數。</li>
+      </ul>
+      <p>這顯示出，即便渴望伴侶的「需求」源源不絕，但實際進入「市場」成交的信心卻逐年遞減。</p>
+
+      <h2>二、幸福列車留言區的真相：女生真的眼光太高嗎？</h2>
+      <p>點開聯誼平台「幸福列車」的粉專留言區，那裡往往比貼文的徵求者本身更精彩。許多用戶質疑貼文的徵求者開出的條件過於苛刻（如年齡差距、對家庭貢獻的要求），認為這對女性並不友善。</p>
+      <p><strong>女生真的不想結婚嗎？</strong>以我觀察周遭女性友人的經驗：</p>
+      <ol>
+        <li><strong>寧缺勿濫的自我實現：</strong>現代女性更傾向先照顧好自己，若無「良配」，維持單身反而是更具品質的選擇。</li>
+        <li><strong>適婚年齡的重新定義：</strong>甚至有研究數據指出，若能避開過早結婚（如 32 歲前），或許能降低因衝動而導致的離婚風險。</li>
+      </ol>
+
+      <h2>三、慕強擇偶與傳宗接代：男性的吸引力只剩薪水？</h2>
+      <p>我們必須為部分男性說句話：這輩男性的壓力，很大程度來自於長輩對「傳宗接代」的執念。許多男性在優渥的家庭環境中長大，自認優秀，因此開出了自認「適配」的條件，但市場（女性）卻不再買單。</p>
+      <p>在生物界中，雄孔雀靠開屏吸引雌性。然而在現代：</p>
+      <ul>
+        <li><strong>擇偶模型的單一化：</strong>除了「薪水」這項指標，男性似乎很難展現出其他讓女性產生「慕強心理」的魅力。</li>
+        <li><strong>價值觀的斷層：</strong>當男性還停留在「提供資源、延續子嗣」的舊觀念時，女性追求的往往是靈魂的共鳴與平等的陪伴。</li>
+      </ul>
+
+      <h2>四、婚姻的本質：在對等關係中尋找彼此舒適的底線</h2>
+      <p>我並非要全盤否定聯誼，而是主張一段健康的關係必須建立在「平等」之上。不對等的關係，無論是條件交換還是情感依附，終究會令人感到窒息。</p>
+      <p>一段能存續的婚姻，核心不在於完美，而在於：</p>
+      <ul>
+        <li><strong>彼此包容：</strong>接受對方的缺點，並在法律底線之上建立默契。</li>
+        <li><strong>對等交換：</strong>無論是物質還是情緒價值，雙方都應感到舒適。</li>
+        <li><strong>尊重差異：</strong>婚姻不該是誰依附誰，而是兩個人都能在關係中感到自在。</li>
+      </ul>
+      <p>最後我想，如果能建立一段相處舒適的交往關係，那或許就已經足夠好了。</p>
+    </div>
+  </div>
+</div>
+
 <footer>
   <p>© 2025 奈默行銷工作室 Naimo Marketing Studio · All rights reserved.</p>
 </footer>
@@ -475,6 +630,23 @@
     document.querySelectorAll('.obs-panel').forEach(p => p.classList.remove('active'));
     document.getElementById('panel-' + key).classList.add('active');
   }
+
+  function showArticle(id) {
+    document.getElementById('article-' + id).classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeArticle() {
+    document.querySelectorAll('.article-modal').forEach(m => m.classList.remove('active'));
+    document.body.style.overflow = 'auto';
+  }
+
+  // Close modal when clicking outside
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('article-modal')) {
+      closeArticle();
+    }
+  });
 </script>
 </body>
 </html>
