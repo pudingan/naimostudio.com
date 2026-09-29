@@ -122,7 +122,41 @@
   .work-badge { display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; background: var(--mint-pale); color: var(--green); border-radius: 20px; padding: 3px 10px; margin-bottom: 0.6rem; }
   .work-title { font-weight: 700; font-size: 0.95rem; color: var(--text-main); margin-bottom: 0.4rem; }
   .work-meta { font-size: 0.82rem; color: var(--text-soft); line-height: 1.5; }
-  .ig-note { margin-top: 2rem; padding: 1.2rem 1.5rem; background: var(--white); border-radius: 16px; border-left: 4px solid var(--mint-deep); font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; }
+  .ig-note {
+    margin-top: 2rem; padding: 1.2rem 1.5rem; background: var(--white); border-radius: 16px;
+    border-left: 4px solid var(--mint-deep); font-size: 0.9rem; color: var(--text-mid); line-height: 1.7;
+  }
+
+  /* Video Cards */
+  .video-section { margin-top: 3rem; }
+  .video-title { font-family: 'Noto Serif TC', serif; font-size: 1.5rem; font-weight: 700; color: var(--text-main); margin-bottom: 2rem; }
+  .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .video-card {
+    background: var(--white); border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--card-border);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .video-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px var(--shadow); }
+  .video-embed {
+    width: 100%; aspect-ratio: 16/9;
+    border: none; border-radius: 12px;
+  }
+  .video-info { padding: 1.2rem; }
+  .video-platform { font-size: 0.72rem; color: var(--text-soft); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .video-desc { font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; }
+  
+  .ig-reel-link {
+    background: linear-gradient(135deg, #E1306C 0%, #C13584 100%);
+    color: white; text-decoration: none;
+    display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+    padding: 1.2rem; border-radius: 12px;
+    font-weight: 600; transition: transform 0.2s;
+  }
+  .ig-reel-link:hover { transform: translateY(-2px); color: white; }
+
+  @media (max-width: 900px) {
+    .video-grid { grid-template-columns: 1fr; }
+  }
 
   /* OBSERVATORY */
   #observatory { background: var(--cream-warm); }
@@ -493,6 +527,44 @@
         </div>
       </div>
     </div>
+
+    <!-- 影片展示區塊 -->
+    <div class="video-section reveal">
+      <h3 class="video-title">動態作品示例</h3>
+      <div class="video-grid">
+        <!-- YouTube -->
+        <div class="video-card">
+          <iframe class="video-embed" src="https://www.youtube.com/embed/0TnL2EIJ2Lg" allowfullscreen="" loading="lazy"></iframe>
+          <div class="video-info">
+            <div class="video-platform">📺 YouTube</div>
+            <div class="video-desc">社群內容製作與短影音運營實務</div>
+          </div>
+        </div>
+
+        <!-- IG Reels 1 -->
+        <div class="video-card">
+          <a href="https://www.instagram.com/reel/C0G7T-vvpp8/?stkn=MTc3MnY1Z3cxeDVqMQ==" target="_blank" class="ig-reel-link" style="min-height: 200px;">
+            <span style="font-size: 1.5rem;">📸</span>
+            <div>
+              <div style="font-size: 0.9rem;">夾子園短影音</div>
+              <div style="font-size: 0.75rem; opacity: 0.9;">點擊查看 IG Reels</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- IG Reels 2 -->
+        <div class="video-card">
+          <a href="https://www.instagram.com/reel/C8JJlBXy-9C/?stkn=MWpoa2t2MGkwOTViNw==" target="_blank" class="ig-reel-link" style="min-height: 200px;">
+            <span style="font-size: 1.5rem;">⚖️</span>
+            <div>
+              <div style="font-size: 0.9rem;">律師個人品牌</div>
+              <div style="font-size: 0.75rem; opacity: 0.9;">點擊查看 IG Reels</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
     <div class="ig-note reveal">
       📱 想看更多真實作品案例？歡迎前往我的 IG：
       <strong><a href="https://www.instagram.com/puddinglife._/" target="_blank" style="color:var(--green-dark); text-decoration:none;">@puddinglife._ ↗</a></strong>
