@@ -96,6 +96,33 @@
   .stat-num { font-family: 'Noto Serif TC', serif; font-size: 2rem; font-weight: 700; color: var(--green-dark); }
   .stat-label { font-size: 0.8rem; color: var(--text-soft); letter-spacing: 0.05em; }
 
+  /* Team Members */
+  .team-section { background: linear-gradient(135deg, var(--mint-pale) 0%, var(--cream-warm) 100%); padding: 3rem 0; }
+  .team-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  .team-title { font-family: 'Noto Serif TC', serif; font-size: 1.2rem; font-weight: 700; color: var(--green-dark); margin-bottom: 2rem; }
+  .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; }
+  .team-card {
+    background: var(--white); border-radius: 20px; padding: 2rem;
+    border: 1px solid var(--card-border);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .team-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px var(--shadow); }
+  .team-avatar {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--mint) 0%, var(--mint-deep) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; margin-bottom: 1.2rem;
+  }
+  .team-name { font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.3rem; }
+  .team-role { font-size: 0.9rem; color: var(--green); font-weight: 600; margin-bottom: 1rem; }
+  .team-bio { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; }
+  .team-link {
+    color: var(--green-dark); text-decoration: none; font-weight: 600;
+    border-bottom: 2px solid var(--mint-deep);
+    transition: all 0.2s;
+  }
+  .team-link:hover { color: var(--mint-deep); }
+
   /* SERVICES */
   #services { background: var(--cream); }
   .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
@@ -396,6 +423,23 @@
           <div class="stat-item"><div class="stat-num">8+</div><div class="stat-label">年行銷經驗</div></div>
           <div class="stat-item"><div class="stat-num">1000萬+</div><div class="stat-label">累積影片觀看</div></div>
           <div class="stat-item"><div class="stat-num">多產業</div><div class="stat-label">跨界合作經驗</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM MEMBERS -->
+<section class="team-section">
+  <div class="team-inner">
+    <h3 class="team-title">核心團隊</h3>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-avatar">🎬</div>
+        <div class="team-name">Rutter</div>
+        <div class="team-role">剪輯師 / 商業攝影</div>
+        <div class="team-bio">
+          參與美國電視節目剪輯與製作，代表作《Staycation: Dubai》榮獲 <strong>2026 Pacific Southwest Emmy Award</strong> 最佳生活風格節目獎。曾為知名伴手禮品牌「裕軒食品」剪輯形象影片，擅長影片剪輯與商業攝影。
         </div>
       </div>
     </div>
